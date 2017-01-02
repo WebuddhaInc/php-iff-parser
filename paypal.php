@@ -42,6 +42,12 @@ if (isset($_FILES['iif']) && isset($_FILES['iif']['tmp_name'])) {
         $trans->splits[0]['ACCNT'] = '"Computer and Internet Expenses"';
       }
       foreach ($trans->splits AS &$split) {
+        if ($split['ACCNT'] == '"Other income"'){
+          $split['ACCNT'] = '"Sales - Support and Maintenance"';
+        }
+        if ($split['ACCNT'] == '"Other expenses"'){
+          $split['ACCNT'] = '"Computer and Internet Expenses"';
+        }
         if ($split['NAME'] == 'Fee'){
           $split['ACCNT'] = '"Merchant Account Fees"';
         }
